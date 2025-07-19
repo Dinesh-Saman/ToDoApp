@@ -15,7 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('body')->nullable();
-            $table->timestamps();
+            $table->string('category')->nullable();
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
+            $table->string('type', 50)->nullable();
+            $table->boolean('isdone')->default(0);
         });
     }
 

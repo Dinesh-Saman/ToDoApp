@@ -42,17 +42,38 @@ const logout = () => {
           class="flex items-center px-6 py-4 text-gray-700 hover:bg-gradient-to-r from-purple-50 to-pink-50 hover:text-purple-800 rounded-xl transition-all duration-300 mb-2 group border border-transparent hover:border-purple-200"
           active-class="bg-gradient-to-r from-purple-100 to-pink-100 text-purple-800 border-purple-300"
         >
-          <span class="mr-4 text-xl group-hover:scale-110 transition-transform">📋</span>
-          <span class="font-medium text-lg">My Notes</span>
+          <span class="mr-4 text-xl group-hover:scale-110 transition-transform">✅</span>
+          <span class="font-medium text-lg">My tasks</span>
           <span class="ml-auto bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">View</span>
         </RouterLink>
+        
         <RouterLink 
-          to="/add" 
+          to="/notes" 
+          class="flex items-center px-6 py-4 text-gray-700 hover:bg-gradient-to-r from-purple-50 to-pink-50 hover:text-purple-800 rounded-xl transition-all duration-300 mb-2 group border border-transparent hover:border-purple-200"
+          active-class="bg-gradient-to-r from-purple-100 to-pink-100 text-purple-800 border-purple-300"
+        >
+          <span class="mr-4 text-xl group-hover:scale-110 transition-transform">📖</span>
+          <span class="font-medium text-lg">My Notes</span>
+          <span class="ml-auto bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded-full">View</span>
+        </RouterLink>
+        
+        <RouterLink 
+          to="/add_task" 
           class="flex items-center px-6 py-4 text-gray-700 hover:bg-gradient-to-r from-purple-50 to-pink-50 hover:text-purple-800 rounded-xl transition-all duration-300 group border border-transparent hover:border-purple-200"
           active-class="bg-gradient-to-r from-purple-100 to-pink-100 text-purple-800 border-purple-300"
         >
-          <span class="mr-4 text-xl group-hover:scale-110 transition-transform">✍️</span>
-          <span class="font-medium text-lg">Create New</span>
+          <span class="mr-4 text-xl group-hover:scale-110 transition-transform">➕</span>
+          <span class="font-medium text-lg">Create task</span>
+          <span class="ml-auto bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded-full">Add</span>
+        </RouterLink>
+
+        <RouterLink 
+          to="/add_note" 
+          class="flex items-center px-6 py-4 text-gray-700 hover:bg-gradient-to-r from-purple-50 to-pink-50 hover:text-purple-800 rounded-xl transition-all duration-300 group border border-transparent hover:border-purple-200"
+          active-class="bg-gradient-to-r from-purple-100 to-pink-100 text-purple-800 border-purple-300"
+        >
+          <span class="mr-4 text-xl group-hover:scale-110 transition-transform">🖋</span>
+          <span class="font-medium text-lg">Create note</span>
           <span class="ml-auto bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded-full">Add</span>
         </RouterLink>
       </nav>
@@ -182,8 +203,6 @@ const logout = () => {
     </div>
   </div>
 </template>
-
-
 
 <style scoped>
 .animate-pulse-slow {

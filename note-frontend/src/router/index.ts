@@ -1,8 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import type { RouteRecordRaw } from 'vue-router';
-import DisplayNotes from '../views/DisplayNotes.vue';
+import DisplayTasks from '../views/DisplayTasks.vue';
+import AddTask from '../views/AddTask.vue';
 import AddNote from '../views/AddNote.vue';
-import EditNote from '../components/EditNote.vue';
+import EditTask from '../components/EditTask.vue';
+import MyNotes from '../views/MyNotes.vue'
 import Login from '../components/Login.vue';
 import axios from 'axios'; // Import axios
 
@@ -14,20 +16,32 @@ const routes: RouteRecordRaw[] = [
   },
   {
     path: '/display',
-    name: 'DisplayNotes',
-    component: DisplayNotes,
+    name: 'DisplayTasks',
+    component: DisplayTasks,
+    meta: { requiresAuth: true },
+  },
+    {
+    path: '/notes',
+    name: 'MyNotes',
+    component: MyNotes,
     meta: { requiresAuth: true },
   },
   {
-    path: '/add',
+    path: '/add_task',
+    name: 'AddTask',
+    component: AddTask,
+    meta: { requiresAuth: true },
+  },
+    {
+    path: '/add_note',
     name: 'AddNote',
     component: AddNote,
     meta: { requiresAuth: true },
   },
   {
     path: '/edit/:id',
-    name: 'EditNote',
-    component: EditNote,
+    name: 'EditTask',
+    component: EditTask,
     props: (route) => ({ id: route.params.id }),
     meta: { requiresAuth: true },
   },

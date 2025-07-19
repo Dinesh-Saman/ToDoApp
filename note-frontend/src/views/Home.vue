@@ -2,7 +2,7 @@
   <div class="container mx-auto p-4">
     <h1 class="text-2xl font-bold mb-4">Note Taking App</h1>
     <NoteForm @note-created="fetchNotes" />
-    <NoteList :notes="notes" @delete-note="deleteNote" @edit-note="editNote" />
+    <NoteList :notes="notes" @delete-note="deleteNote" @edit-note="EditTask" />
     <RouterView />
   </div>
 </template>
@@ -38,11 +38,11 @@ export default {
       }
     };
 
-    const editNote = async (note) => {
+    const EditTask = async (note) => {
       // Fetch the latest note data to ensure consistency
       try {
         const response = await axios.get(`http://localhost:8000/api/notes/${note.id}`);
-        router.push({ name: 'EditNote', params: { id: note.id }, props: { note: response.data } });
+        router.push({ name: 'EditTask', params: { id: note.id }, props: { note: response.data } });
       } catch (error) {
         console.error('Error fetching note for edit:', error);
       }
@@ -50,7 +50,7 @@ export default {
 
     onMounted(fetchNotes);
 
-    return { notes, fetchNotes, deleteNote, editNote };
+    return { notes, fetchNotes, deleteNote, EditTask };
   },
 };
 </script>

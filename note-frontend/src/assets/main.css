@@ -1,0 +1,4 @@
+@import './base.css'; /* Keep if base.css is essential, otherwise remove */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

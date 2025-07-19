@@ -10,9 +10,10 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'Admin',
+            'name' => 'Admin User',
             'email' => 'admin@example.com',
-            'password' => bcrypt('password123'),
+            'password' => Hash::make('securepassword123'),
+            'api_token' => 'demo-auth-token-12345', // Add custom API token
         ]);
     }
 }

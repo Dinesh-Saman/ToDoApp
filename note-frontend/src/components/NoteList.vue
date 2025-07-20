@@ -298,7 +298,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch, nextTick, onMounted } from 'vue';
+import { ref, computed, watch, nextTick } from 'vue';
 import axios from 'axios';
 import Dialog from 'primevue/dialog';
 import Button from 'primevue/button';
@@ -359,7 +359,7 @@ const filteredNotes = computed(() => {
 // Auto-select most recent note when component mounts or notes change
 const autoSelectMostRecentNote = () => {
   if (filteredNotes.value.length > 0 && !selectedNote.value) {
-    selectNote(filteredNotes.value[0]); // First note is most recent due to desc sorting
+    selectNote(filteredNotes.value[0]);
   }
 };
 
@@ -394,12 +394,13 @@ const confirmDelete = async () => {
   try {
     await axios.delete(`http://localhost:8000/api/notes/${noteToDeleteId.value}`);
     
-    // If deleting currently selected note, clear selection
+    // If deleting currently selected note, clear selection and auto-select next note
     if (selectedNote.value?.id === noteToDeleteId.value) {
       selectedNote.value = null;
       isEditMode.value = false;
     }
     
+    // Emit the delete event to parent component to update the notes array
     emit('delete-note', noteToDeleteId.value);
     deleteDialogVisible.value = false;
     

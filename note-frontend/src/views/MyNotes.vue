@@ -64,17 +64,17 @@ const selectNote = (id) => {
   selectedNoteId.value = id;
 };
 
-const deleteNote = async (id: number) => {
-  try {
-    await axios.delete(`http://localhost:8000/api/notes/${id}`);
-    notes.value = notes.value.filter(note => note.id !== id);
-    
-    // If we deleted the selected note, select the next newest one
-    if (selectedNoteId.value === id && notes.value.length > 0) {
-      selectedNoteId.value = sortedNotes.value[0]?.id || null;
+const deleteNote = (id: number) => {
+  // Remove the note from the local array immediately (no need for API call here since NoteList already did it)
+  notes.value = notes.value.filter(note => note.id !== id);
+  
+  // If we deleted the selected note, select the next newest one
+  if (selectedNoteId.value === id) {
+    if (sortedNotes.value.length > 0) {
+      selectedNoteId.value = sortedNotes.value[0].id;
+    } else {
+      selectedNoteId.value = null;
     }
-  } catch (error) {
-    console.error('Error deleting note:', error);
   }
 };
 
